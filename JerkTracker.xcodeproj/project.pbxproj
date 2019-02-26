@@ -12,9 +12,28 @@
 		3E0CD567221D62CA0010E6C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0CD565221D62CA0010E6C3 /* Main.storyboard */; };
 		3E0CD569221D62CB0010E6C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E0CD568221D62CB0010E6C3 /* Assets.xcassets */; };
 		3E0CD56C221D62CB0010E6C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E0CD56A221D62CB0010E6C3 /* LaunchScreen.storyboard */; };
+		3E746B32221D9F080042919E /* JerksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E746B31221D9F080042919E /* JerksListViewController.swift */; };
+		3E746B34221D9F750042919E /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E746B33221D9F750042919E /* DemoViewController.swift */; };
+		3E746B37221DA33B0042919E /* RecordJerkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E746B36221DA33B0042919E /* RecordJerkViewController.swift */; };
+		3E746B39221ED2F80042919E /* SimpleNeuralNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E746B38221ED2F80042919E /* SimpleNeuralNet.swift */; };
+		3E746B48221EF5100042919E /* w1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 3E746B44221EF50F0042919E /* w1.csv */; };
+		3E746B49221EF5100042919E /* x.csv in Resources */ = {isa = PBXBuildFile; fileRef = 3E746B45221EF50F0042919E /* x.csv */; };
+		3E746B4A221EF5100042919E /* w2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 3E746B46221EF5100042919E /* w2.csv */; };
+		3E746B4B221EF5100042919E /* y.csv in Resources */ = {isa = PBXBuildFile; fileRef = 3E746B47221EF5100042919E /* y.csv */; };
+		3E746B4D221F34A50042919E /* TrainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E746B4C221F34A50042919E /* TrainViewController.swift */; };
+		3E746B4F221F3DC60042919E /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E746B4E221F3DC60042919E /* ArrayExtensions.swift */; };
+		3E746B51221F4D840042919E /* GaussianGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E746B50221F4D840042919E /* GaussianGenerator.swift */; };
+		3E746B5322201CC40042919E /* three.csv in Resources */ = {isa = PBXBuildFile; fileRef = 3E746B5222201CC40042919E /* three.csv */; };
+		3E7D01E1221D68F800B6ED39 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D01E0221D68F800B6ED39 /* ChartView.swift */; };
+		3E7D01E3221D749400B6ED39 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D01E2221D749400B6ED39 /* UIColorExtensions.swift */; };
+		3E7D01E5221D9D7D00B6ED39 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D01E4221D9D7D00B6ED39 /* MainViewController.swift */; };
+		3E9EBB262225BB690033495C /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EBB252225BB690033495C /* ChartViewController.swift */; };
+		AAA0ED35CDF94931F2A23429 /* Pods_JerkTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481EFC4BE2EFFB5BD887D62 /* Pods_JerkTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0481EFC4BE2EFFB5BD887D62 /* Pods_JerkTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JerkTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06D64D2B170FF9097E0DAE85 /* Pods-JerkTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JerkTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		3E0CD55E221D62CA0010E6C3 /* JerkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JerkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E0CD561221D62CA0010E6C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E0CD563221D62CA0010E6C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +41,23 @@
 		3E0CD568221D62CB0010E6C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E0CD56B221D62CB0010E6C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E0CD56D221D62CB0010E6C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E746B31221D9F080042919E /* JerksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JerksListViewController.swift; sourceTree = "<group>"; };
+		3E746B33221D9F750042919E /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
+		3E746B36221DA33B0042919E /* RecordJerkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordJerkViewController.swift; sourceTree = "<group>"; };
+		3E746B38221ED2F80042919E /* SimpleNeuralNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNeuralNet.swift; sourceTree = "<group>"; };
+		3E746B44221EF50F0042919E /* w1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = w1.csv; sourceTree = "<group>"; };
+		3E746B45221EF50F0042919E /* x.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = x.csv; sourceTree = "<group>"; };
+		3E746B46221EF5100042919E /* w2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = w2.csv; sourceTree = "<group>"; };
+		3E746B47221EF5100042919E /* y.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = y.csv; sourceTree = "<group>"; };
+		3E746B4C221F34A50042919E /* TrainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainViewController.swift; sourceTree = "<group>"; };
+		3E746B4E221F3DC60042919E /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		3E746B50221F4D840042919E /* GaussianGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaussianGenerator.swift; sourceTree = "<group>"; };
+		3E746B5222201CC40042919E /* three.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = three.csv; sourceTree = "<group>"; };
+		3E7D01E0221D68F800B6ED39 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		3E7D01E2221D749400B6ED39 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		3E7D01E4221D9D7D00B6ED39 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3E9EBB252225BB690033495C /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		9824339C24BAFFF80A485105 /* Pods-JerkTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JerkTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +65,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA0ED35CDF94931F2A23429 /* Pods_JerkTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2165C72335AD325421360BA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0481EFC4BE2EFFB5BD887D62 /* Pods_JerkTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C7EB14CEA52DA653D9C82EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				06D64D2B170FF9097E0DAE85 /* Pods-JerkTracker.debug.xcconfig */,
+				9824339C24BAFFF80A485105 /* Pods-JerkTracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3E0CD555221D62CA0010E6C3 = {
 			isa = PBXGroup;
 			children = (
 				3E0CD560221D62CA0010E6C3 /* JerkTracker */,
 				3E0CD55F221D62CA0010E6C3 /* Products */,
+				3C7EB14CEA52DA653D9C82EB /* Pods */,
+				2165C72335AD325421360BA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,12 +110,28 @@
 		3E0CD560221D62CA0010E6C3 /* JerkTracker */ = {
 			isa = PBXGroup;
 			children = (
+				3E746B5222201CC40042919E /* three.csv */,
+				3E746B44221EF50F0042919E /* w1.csv */,
+				3E746B46221EF5100042919E /* w2.csv */,
+				3E746B45221EF50F0042919E /* x.csv */,
+				3E746B47221EF5100042919E /* y.csv */,
+				3E7D01E2221D749400B6ED39 /* UIColorExtensions.swift */,
 				3E0CD561221D62CA0010E6C3 /* AppDelegate.swift */,
 				3E0CD563221D62CA0010E6C3 /* ViewController.swift */,
 				3E0CD565221D62CA0010E6C3 /* Main.storyboard */,
 				3E0CD568221D62CB0010E6C3 /* Assets.xcassets */,
 				3E0CD56A221D62CB0010E6C3 /* LaunchScreen.storyboard */,
 				3E0CD56D221D62CB0010E6C3 /* Info.plist */,
+				3E7D01E0221D68F800B6ED39 /* ChartView.swift */,
+				3E7D01E4221D9D7D00B6ED39 /* MainViewController.swift */,
+				3E746B31221D9F080042919E /* JerksListViewController.swift */,
+				3E746B33221D9F750042919E /* DemoViewController.swift */,
+				3E746B36221DA33B0042919E /* RecordJerkViewController.swift */,
+				3E746B38221ED2F80042919E /* SimpleNeuralNet.swift */,
+				3E746B4C221F34A50042919E /* TrainViewController.swift */,
+				3E746B4E221F3DC60042919E /* ArrayExtensions.swift */,
+				3E746B50221F4D840042919E /* GaussianGenerator.swift */,
+				3E9EBB252225BB690033495C /* ChartViewController.swift */,
 			);
 			path = JerkTracker;
 			sourceTree = "<group>";
@@ -71,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E0CD570221D62CB0010E6C3 /* Build configuration list for PBXNativeTarget "JerkTracker" */;
 			buildPhases = (
+				AEF4D7DC5CFF736A8DB7372F /* [CP] Check Pods Manifest.lock */,
 				3E0CD55A221D62CA0010E6C3 /* Sources */,
 				3E0CD55B221D62CA0010E6C3 /* Frameworks */,
 				3E0CD55C221D62CA0010E6C3 /* Resources */,
+				CF653998EEB44B46357CAC6A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,6 +196,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E746B48221EF5100042919E /* w1.csv in Resources */,
+				3E746B4B221EF5100042919E /* y.csv in Resources */,
+				3E746B4A221EF5100042919E /* w2.csv in Resources */,
+				3E746B5322201CC40042919E /* three.csv in Resources */,
+				3E746B49221EF5100042919E /* x.csv in Resources */,
 				3E0CD56C221D62CB0010E6C3 /* LaunchScreen.storyboard in Resources */,
 				3E0CD569221D62CB0010E6C3 /* Assets.xcassets in Resources */,
 				3E0CD567221D62CA0010E6C3 /* Main.storyboard in Resources */,
@@ -130,13 +209,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AEF4D7DC5CFF736A8DB7372F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JerkTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF653998EEB44B46357CAC6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TensorSwift/TensorSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TensorSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3E0CD55A221D62CA0010E6C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E746B51221F4D840042919E /* GaussianGenerator.swift in Sources */,
+				3E746B32221D9F080042919E /* JerksListViewController.swift in Sources */,
 				3E0CD564221D62CA0010E6C3 /* ViewController.swift in Sources */,
 				3E0CD562221D62CA0010E6C3 /* AppDelegate.swift in Sources */,
+				3E9EBB262225BB690033495C /* ChartViewController.swift in Sources */,
+				3E746B39221ED2F80042919E /* SimpleNeuralNet.swift in Sources */,
+				3E746B37221DA33B0042919E /* RecordJerkViewController.swift in Sources */,
+				3E746B4F221F3DC60042919E /* ArrayExtensions.swift in Sources */,
+				3E7D01E1221D68F800B6ED39 /* ChartView.swift in Sources */,
+				3E746B34221D9F750042919E /* DemoViewController.swift in Sources */,
+				3E746B4D221F34A50042919E /* TrainViewController.swift in Sources */,
+				3E7D01E3221D749400B6ED39 /* UIColorExtensions.swift in Sources */,
+				3E7D01E5221D9D7D00B6ED39 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +421,7 @@
 		};
 		3E0CD571221D62CB0010E6C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06D64D2B170FF9097E0DAE85 /* Pods-JerkTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +440,7 @@
 		};
 		3E0CD572221D62CB0010E6C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9824339C24BAFFF80A485105 /* Pods-JerkTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

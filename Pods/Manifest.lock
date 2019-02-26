@@ -1,0 +1,24 @@
+PODS:
+  - SnapKit (4.2.0)
+  - TensorSwift (0.2.2)
+  - Then (2.4.0)
+
+DEPENDENCIES:
+  - SnapKit
+  - TensorSwift
+  - Then
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SnapKit
+    - TensorSwift
+    - Then
+
+SPEC CHECKSUMS:
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  TensorSwift: 09217b0fb41272c6a178ba50b4bb01f2d10d88be
+  Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
+
+PODFILE CHECKSUM: 98f3265296771455ebb2e9c7e602efd7995d2c8a
+
+COCOAPODS: 1.5.3
