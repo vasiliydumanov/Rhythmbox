@@ -28,6 +28,7 @@
 		3E7D01E3221D749400B6ED39 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D01E2221D749400B6ED39 /* UIColorExtensions.swift */; };
 		3E7D01E5221D9D7D00B6ED39 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D01E4221D9D7D00B6ED39 /* MainViewController.swift */; };
 		3E9EBB262225BB690033495C /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EBB252225BB690033495C /* ChartViewController.swift */; };
+		3E9EBB282226997A0033495C /* JerkNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EBB272226997A0033495C /* JerkNet.mlmodel */; };
 		AAA0ED35CDF94931F2A23429 /* Pods_JerkTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481EFC4BE2EFFB5BD887D62 /* Pods_JerkTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		3E7D01E2221D749400B6ED39 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		3E7D01E4221D9D7D00B6ED39 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3E9EBB252225BB690033495C /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		3E9EBB272226997A0033495C /* JerkNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = JerkNet.mlmodel; sourceTree = "<group>"; };
 		9824339C24BAFFF80A485105 /* Pods-JerkTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JerkTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 		3E0CD560221D62CA0010E6C3 /* JerkTracker */ = {
 			isa = PBXGroup;
 			children = (
+				3E9EBB272226997A0033495C /* JerkNet.mlmodel */,
 				3E746B5222201CC40042919E /* three.csv */,
 				3E746B44221EF50F0042919E /* w1.csv */,
 				3E746B46221EF5100042919E /* w2.csv */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E9EBB282226997A0033495C /* JerkNet.mlmodel in Sources */,
 				3E746B51221F4D840042919E /* GaussianGenerator.swift in Sources */,
 				3E746B32221D9F080042919E /* JerksListViewController.swift in Sources */,
 				3E0CD564221D62CA0010E6C3 /* ViewController.swift in Sources */,

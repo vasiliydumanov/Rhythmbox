@@ -45,6 +45,7 @@ class JerksListViewController: UIViewController {
         _jerkFilePaths = _jerkFileNames.map { name in
             (jerksDirPath as NSString).appendingPathComponent(name)
         }
+        _tableView.reloadData()
     }
     
     private func setupTableView() {

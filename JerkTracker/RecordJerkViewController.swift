@@ -11,25 +11,19 @@ import Speech
 import AVFoundation
 import CoreMotion
 
-private final class Jerk : NSObject {
-    var values: [Double] = []
-}
 
 class RecordJerkViewController: UIViewController {
     private let _audioEngine = AVAudioEngine()
     private var _recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var _recognitionTask: SFSpeechRecognitionTask?
     private let _speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    private var _chartVC: ChartViewController!
     
     private var _wasStarted = false
     private var _wasStopped = false
     
     private var _recordingLbl: UILabel!
-    private var _chartView: ChartView!
-    private var _motion: CMMotionManager!
-    
     private let _jerkName: String
-    private var _jerks: [Jerk] = []
 
     init(jerkName: String) {
         _jerkName = jerkName
@@ -45,8 +39,7 @@ class RecordJerkViewController: UIViewController {
         view.backgroundColor = .black
         checkSpeechRecognitionPermissions()
         setupRecordingLabel()
-        setupChartView()
-        setupMotionUpdates()
+        setupChartViewController()
     }
     
     private func setupRecordingLabel() {
@@ -66,76 +59,26 @@ class RecordJerkViewController: UIViewController {
         }
     }
     
-    private func setupChartView() {
-        _chartView = ChartView().then {
-            $0.yRange = (0...4)
-        }
-        view.addSubview(_chartView)
-        _chartView.snp.makeConstraints { make in
+    private func setupChartViewController() {
+        _chartVC = ChartViewController(nibName: nil, bundle: nil)
+        addChild(_chartVC)
+        _chartVC.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(_chartVC.view)
+        _chartVC.view.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-40)
             make.top.equalTo(view.snp.topMargin).offset(100)
         }
-        
-//        let rec = UITapGestureRecognizer(target: self, action: #selector(chartTapped))
-//        _chartView.addGestureRecognizer(rec)
+        _chartVC.didMove(toParent: self)
     }
     
     private var _isHighlighting = false
-    @objc private func chartTapped() {
-        _isHighlighting = !_isHighlighting
-        _isHighlighting ? _chartView.startHighlighting() : _chartView.stopHighlighting()
-    }
     
     private var _isTrackingJerk = false
     private var _jerkPatienceFrameCounter: Int = 0
     private let kJerkTriggerBoundary: Double = 0.3
     private let kJerkEndPatience: Int = 30
-    
-    private func setupMotionUpdates() {
-        let motionUpdatesQueue = OperationQueue()
-        motionUpdatesQueue.qualityOfService = .userInitiated
-        
-        _motion = CMMotionManager()
-        _motion.deviceMotionUpdateInterval = 1 / 60.0
-        var zPrevAcc: Double = 0
-        _motion.startDeviceMotionUpdates(to: motionUpdatesQueue) { [unowned self] (motion, error) in
-            if let err = error {
-                print("Error: \(err)")
-                return
-            }
-            guard let a = motion?.userAcceleration else {
-                print("Error: no data")
-                return
-            }
-            let zJerk = abs(a.z - zPrevAcc)
-            zPrevAcc = a.z
-            
-            if zJerk >= self.kJerkTriggerBoundary {
-                self._jerkPatienceFrameCounter = 0
-                if !self._isTrackingJerk {
-                    self._isTrackingJerk = true
-                    self._jerks.append(Jerk())
-                    self._chartView.startHighlighting()
-                }
-            } else if self._isTrackingJerk {
-                self._jerkPatienceFrameCounter += 1
-                if self._jerkPatienceFrameCounter >= self.kJerkEndPatience {
-                    self._isTrackingJerk = false
-                    self._chartView.stopHighlighting()
-                }
-            }
-            
-            if self._isTrackingJerk {
-                self._jerks.last?.values.append(zJerk)
-            }
-            
-            DispatchQueue.main.async {
-                self._chartView.add(yCoord: zJerk)
-            }
-        }
-    }
     
     private func checkSpeechRecognitionPermissions() {
         switch SFSpeechRecognizer.authorizationStatus() {
@@ -207,11 +150,7 @@ class RecordJerkViewController: UIViewController {
         _wasStopped = true
         stopMicrophoneRecordingAndRecognition()
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-        _motion.stopDeviceMotionUpdates()
-        if _isTrackingJerk {
-            _isTrackingJerk = false
-            _jerks.removeLast()
-        }
+        _chartVC.stop()
         DispatchQueue.main.async { [weak self] in
             self?._recordingLbl.isHidden = true
         }
@@ -232,7 +171,7 @@ class RecordJerkViewController: UIViewController {
         fm.createFile(atPath: jerkClassPath, contents: nil, attributes: nil)
         
         let fileHandle = FileHandle(forWritingAtPath: jerkClassPath)!
-        for jerk in _jerks {
+        for jerk in _chartVC.jerks {
             let jerkStr = jerk.values.map(String.init).joined(separator: ",") + "\n"
             fileHandle.seekToEndOfFile()
             fileHandle.write(jerkStr.data(using: .utf8)!)

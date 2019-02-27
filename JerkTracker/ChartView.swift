@@ -25,8 +25,12 @@ class ChartView: UIView {
     private var _isHighlighting = false
     private var _highlights: [Highlight] = []
     
-    init() {
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    convenience init() {
+        self.init(frame: .zero)
     }
     
     required init?(coder aDecoder: NSCoder) {

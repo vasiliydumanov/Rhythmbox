@@ -14,7 +14,7 @@ typealias ForwardPassResult = (z1: Tensor, a1: Tensor, z2: Tensor, a2: Tensor)
 typealias EvaluationResult = (loss: Float, accuracy: Float)
 
 class SimpleNeuralNet {
-    private let _inputUnits: Int
+    let inputUnits: Int
     private let _l1Units: Int
     private let _l2Units: Int
     
@@ -33,12 +33,13 @@ class SimpleNeuralNet {
     private var _vb1: Tensor!
     private var _vb2: Tensor!
     
+    private static let _serializedParams: [String] = ["units", "w1", "w2", "b1", "b2"]
+    
     init() {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let modelDirPath = (documentsPath as NSString).appendingPathComponent("ModelParameters")
-        let paramFiles = try! FileManager.default.contentsOfDirectory(atPath: modelDirPath)
         var tensors: [Tensor] = []
-        for file in paramFiles {
+        for file in SimpleNeuralNet._serializedParams {
             let filepath = (modelDirPath as NSString).appendingPathComponent("\(file).csv")
             let contents = try! String(contentsOfFile: filepath, encoding: .utf8)
             let tensor = Tensor.from(csvString: contents)
@@ -46,7 +47,7 @@ class SimpleNeuralNet {
         }
         
         let units = tensors[0]
-        _inputUnits = Int(units[0, 0])
+        inputUnits = Int(units[0, 0])
         _l1Units = Int(units[0, 1])
         _l2Units = Int(units[0, 2])
         
@@ -57,16 +58,16 @@ class SimpleNeuralNet {
     }
     
     init(inputUnits: Int, l1Units: Int, l2Units: Int) {
-        _inputUnits = inputUnits
+        self.inputUnits = inputUnits
         _l1Units = l1Units
         _l2Units = l2Units
         
-        let w1Shape = Shape([Dimension(_inputUnits), Dimension(_l1Units)])
+        let w1Shape = Shape([Dimension(inputUnits), Dimension(_l1Units)])
         let w2Shape = Shape([Dimension(_l1Units), Dimension(_l2Units)])
         let b1Shape = Shape([1, Dimension(_l1Units)])
         let b2Shape = Shape([1, Dimension(_l2Units)])
         
-        _w1 = Tensor.glorot(fanIn: _inputUnits, fanOut: _l1Units, shape: w1Shape)
+        _w1 = Tensor.glorot(fanIn: inputUnits, fanOut: _l1Units, shape: w1Shape)
         _w2 = Tensor.glorot(fanIn: _l1Units, fanOut: _l2Units, shape: w2Shape)
         _b1 = Tensor(shape: b1Shape, element: 0)
         _b2 = Tensor(shape: b2Shape, element: 0)
@@ -75,7 +76,7 @@ class SimpleNeuralNet {
     }
     
     init(_ tensors: [Tensor]) {
-        _inputUnits = 2
+        inputUnits = 2
         _l1Units = 3
         _l2Units = 2
         
@@ -244,20 +245,27 @@ class SimpleNeuralNet {
             try! FileManager.default.createDirectory(atPath: modelDirPath, withIntermediateDirectories: false, attributes: nil)
         }
         
-        let unitsTensor = Tensor(shape: Shape([1, 2]), elements: [_inputUnits, _l1Units, _l2Units].map(Float.init))
+        let unitsTensor = Tensor(shape: Shape([1, 3]), elements: [inputUnits, _l1Units, _l2Units].map(Float.init))
         let tensorsToSave: [Tensor] = [unitsTensor, _w1, _w2, _b1, _b2]
-        let filenames: [String] = ["units", "w1", "w2", "b1", "b2"]
-        for (tensor, filename) in zip(tensorsToSave, filenames) {
+        for (tensor, filename) in zip(tensorsToSave, SimpleNeuralNet._serializedParams) {
             let filepath = (modelDirPath as NSString).appendingPathComponent("\(filename).csv")
             try! tensor.toCSVString().write(toFile: filepath, atomically: true, encoding: .utf8)
         }
     }
     
-//    func predict(xRaw: [[Float]]) -> Tensor {
-//        let x = Tensor(shape: Shape([Dimension(xRaw.count), Dimension(xRaw[0].count)]), elements: xRaw.flatMap { $0 })
-//        let (_, _, _, probs) = forwardPass(x)
-//        return probs
-//    }
+    func predict(xRaw: [[Float]]) -> [[Float]] {
+        let x = Tensor(shape: Shape([Dimension(xRaw.count), Dimension(xRaw[0].count)]), elements: xRaw.flatMap { $0 })
+        let (_, _, _, probs) = forwardPass(x)
+        var probsArr: [[Float]] = []
+        for i in 0..<probs.rows {
+            var singleProbs: [Float] = []
+            for k in 0..<probs.cols {
+                singleProbs.append(probs[i, k])
+            }
+            probsArr.append(singleProbs)
+        }
+        return probsArr
+    }
 }
 
 extension Tensor {
