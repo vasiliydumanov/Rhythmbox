@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import swix_ios
 
 class ViewController: UIViewController {
     private var _motion: CMMotionManager!

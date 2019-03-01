@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../SwiftMLP/SwiftMLP.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:JerkTracker.xcodeproj">
    </FileRef>
    <FileRef

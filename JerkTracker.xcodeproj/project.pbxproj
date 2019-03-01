@@ -28,9 +28,28 @@
 		3E7D01E3221D749400B6ED39 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D01E2221D749400B6ED39 /* UIColorExtensions.swift */; };
 		3E7D01E5221D9D7D00B6ED39 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D01E4221D9D7D00B6ED39 /* MainViewController.swift */; };
 		3E9EBB262225BB690033495C /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EBB252225BB690033495C /* ChartViewController.swift */; };
-		3E9EBB282226997A0033495C /* JerkNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3E9EBB272226997A0033495C /* JerkNet.mlmodel */; };
+		3EA971A4222989AC0082E71A /* SwiftMLP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A3222989AC0082E71A /* SwiftMLP.framework */; };
+		3EA971A5222989AC0082E71A /* SwiftMLP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A3222989AC0082E71A /* SwiftMLP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3EA971A822298A820082E71A /* RhythmNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA971A722298A820082E71A /* RhythmNet.swift */; };
+		3EA971AA22298FDB0082E71A /* swix_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A922298FDB0082E71A /* swix_ios.framework */; };
+		3EA971AB22298FDB0082E71A /* swix_ios.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A922298FDB0082E71A /* swix_ios.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAA0ED35CDF94931F2A23429 /* Pods_JerkTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481EFC4BE2EFFB5BD887D62 /* Pods_JerkTracker.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3EA971A6222989AC0082E71A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3EA971A5222989AC0082E71A /* SwiftMLP.framework in Embed Frameworks */,
+				3EA971AB22298FDB0082E71A /* swix_ios.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0481EFC4BE2EFFB5BD887D62 /* Pods_JerkTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JerkTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,7 +77,9 @@
 		3E7D01E2221D749400B6ED39 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		3E7D01E4221D9D7D00B6ED39 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3E9EBB252225BB690033495C /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
-		3E9EBB272226997A0033495C /* JerkNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = JerkNet.mlmodel; sourceTree = "<group>"; };
+		3EA971A3222989AC0082E71A /* SwiftMLP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftMLP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EA971A722298A820082E71A /* RhythmNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmNet.swift; sourceTree = "<group>"; };
+		3EA971A922298FDB0082E71A /* swix_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = swix_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9824339C24BAFFF80A485105 /* Pods-JerkTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JerkTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA971AA22298FDB0082E71A /* swix_ios.framework in Frameworks */,
+				3EA971A4222989AC0082E71A /* SwiftMLP.framework in Frameworks */,
 				AAA0ED35CDF94931F2A23429 /* Pods_JerkTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +117,8 @@
 		3E0CD555221D62CA0010E6C3 = {
 			isa = PBXGroup;
 			children = (
+				3EA971A922298FDB0082E71A /* swix_ios.framework */,
+				3EA971A3222989AC0082E71A /* SwiftMLP.framework */,
 				3E0CD560221D62CA0010E6C3 /* JerkTracker */,
 				3E0CD55F221D62CA0010E6C3 /* Products */,
 				3C7EB14CEA52DA653D9C82EB /* Pods */,
@@ -112,7 +137,6 @@
 		3E0CD560221D62CA0010E6C3 /* JerkTracker */ = {
 			isa = PBXGroup;
 			children = (
-				3E9EBB272226997A0033495C /* JerkNet.mlmodel */,
 				3E746B5222201CC40042919E /* three.csv */,
 				3E746B44221EF50F0042919E /* w1.csv */,
 				3E746B46221EF5100042919E /* w2.csv */,
@@ -135,6 +159,7 @@
 				3E746B4E221F3DC60042919E /* ArrayExtensions.swift */,
 				3E746B50221F4D840042919E /* GaussianGenerator.swift */,
 				3E9EBB252225BB690033495C /* ChartViewController.swift */,
+				3EA971A722298A820082E71A /* RhythmNet.swift */,
 			);
 			path = JerkTracker;
 			sourceTree = "<group>";
@@ -151,6 +176,7 @@
 				3E0CD55B221D62CA0010E6C3 /* Frameworks */,
 				3E0CD55C221D62CA0010E6C3 /* Resources */,
 				CF653998EEB44B46357CAC6A /* [CP] Embed Pods Frameworks */,
+				3EA971A6222989AC0082E71A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,6 +199,11 @@
 				TargetAttributes = {
 					3E0CD55D221D62CA0010E6C3 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -268,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E9EBB282226997A0033495C /* JerkNet.mlmodel in Sources */,
 				3E746B51221F4D840042919E /* GaussianGenerator.swift in Sources */,
 				3E746B32221D9F080042919E /* JerksListViewController.swift in Sources */,
 				3E0CD564221D62CA0010E6C3 /* ViewController.swift in Sources */,
@@ -278,6 +308,7 @@
 				3E746B37221DA33B0042919E /* RecordJerkViewController.swift in Sources */,
 				3E746B4F221F3DC60042919E /* ArrayExtensions.swift in Sources */,
 				3E7D01E1221D68F800B6ED39 /* ChartView.swift in Sources */,
+				3EA971A822298A820082E71A /* RhythmNet.swift in Sources */,
 				3E746B34221D9F750042919E /* DemoViewController.swift in Sources */,
 				3E746B4D221F34A50042919E /* TrainViewController.swift in Sources */,
 				3E7D01E3221D749400B6ED39 /* UIColorExtensions.swift in Sources */,
@@ -442,7 +473,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weezlabs.JerkTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JerkTracker/swix/objc/swix-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -467,7 +498,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.weezlabs.JerkTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "JerkTracker/swix/objc/swix-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

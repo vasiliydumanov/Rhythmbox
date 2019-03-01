@@ -52,23 +52,7 @@ class DemoViewController: UIViewController, ChartViewControllerDelegate {
         _synthesizer.speak(ut)
     }
     
-    private func predictCoreMl(_ jerk: Jerk) {
-        let nn = JerkNet()
-        var jerkValues = jerk.values.map(Float.init)
-        let nnInputSize: Int = nn.model.modelDescription.inputDescriptionsByName["jerk"]!.multiArrayConstraint!.shape[0].intValue
-        guard jerkValues.count <= nnInputSize else { return }
-        jerkValues = Array<Float>(repeating: 0, count: nnInputSize - jerkValues.count) + jerkValues
-        let input = try! MLMultiArray(shape: [nnInputSize] as [NSNumber], dataType: .float32)
-        let inputPtr = input.dataPointer.assumingMemoryBound(to: Float32.self)
-        for i in 0..<nnInputSize {
-            inputPtr[i] = jerkValues[i]
-        }
-        let clsLbl = (try! nn.prediction(jerk: input)).classLabel
-        print(clsLbl)
-        speak(clsLbl)
-    }
-    
-    private func predictOnDevice(_ jerk: Jerk) {
+    private func predictOnDevice(_ jerk: Rhythm) {
         let nn = SimpleNeuralNet()
         var jerkValues = jerk.values.map(Float.init)
         guard jerkValues.count <= nn.inputUnits else { return }
@@ -88,7 +72,7 @@ class DemoViewController: UIViewController, ChartViewControllerDelegate {
         speak(clsLbl)
     }
     
-    func newJerkRecorded(_ jerk: Jerk) {
+    func newJerkRecorded(_ jerk: Rhythm) {
         predictOnDevice(jerk)
     }
 }

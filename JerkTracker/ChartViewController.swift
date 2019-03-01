@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import CoreMotion
 
-final class Jerk : NSObject {
+final class Rhythm : NSObject {
     var values: [Double] = []
 }
 
 protocol ChartViewControllerDelegate : class {
-    func newJerkRecorded(_ jerk: Jerk)
+    func newJerkRecorded(_ jerk: Rhythm)
 }
 
 final class ChartViewController : UIViewController {
@@ -23,7 +23,7 @@ final class ChartViewController : UIViewController {
     private var _motion: CMMotionManager!
     weak var delegate: ChartViewControllerDelegate?
     
-    var jerks: [Jerk] = []
+    var jerks: [Rhythm] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,7 @@ final class ChartViewController : UIViewController {
         _motion = CMMotionManager()
         _motion.deviceMotionUpdateInterval = 1 / 60.0
         var zPrevAcc: Double = 0
+        var cntr = 0
         _motion.startDeviceMotionUpdates(to: motionUpdatesQueue) { [unowned self] (motion, error) in
             if let err = error {
                 print("Error: \(err)")
@@ -70,7 +71,7 @@ final class ChartViewController : UIViewController {
                 self._jerkPatienceFrameCounter = 0
                 if !self._isTrackingJerk {
                     self._isTrackingJerk = true
-                    self.jerks.append(Jerk())
+                    self.jerks.append(Rhythm())
                     self._chartView.startHighlighting()
                 }
             } else if self._isTrackingJerk {
@@ -84,6 +85,12 @@ final class ChartViewController : UIViewController {
             
             if self._isTrackingJerk {
                 self.jerks.last?.values.append(zJerk)
+            }
+            
+            cntr += 1
+            if cntr == 60 {
+                cntr = 0
+                print("JerksGotMotionData: \(Date())")
             }
             
             DispatchQueue.main.async {
