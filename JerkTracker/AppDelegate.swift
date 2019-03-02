@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        debugNN()
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootVC = UINavigationController(rootViewController: MainViewController(nibName: nil, bundle: nil))
-//        window?.rootViewController = rootVC
-        window?.rootViewController = RecordJerkViewController(jerkName: "three-2")
+        window?.rootViewController = rootVC
+//        window?.rootViewController = RecordJerkViewController(jerkName: "three-2")
 //        window?.rootViewController = TrainViewController(nibName: nil, bundle: nil)
         window?.makeKeyAndVisible()
         return true

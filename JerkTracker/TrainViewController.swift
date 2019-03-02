@@ -17,10 +17,12 @@ final class TrainViewController : UIViewController {
     private var _saveItem: UIBarButtonItem!
     private var _logTextView: UITextView!
     
-    private var _nn: SimpleNeuralNet!
+    private var _nn: RhythmNet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        _nn = RhythmNet()
+        _ = _nn.restoreParameters()
         setupNavBar()
         setupTextView()
         trainModel()
@@ -51,80 +53,39 @@ final class TrainViewController : UIViewController {
         view.addSubview(_logTextView)
     }
     
-    private func loadData() -> (x: [[Float]], y: [Float], numberOfClasses: Int) {
+    private func loadData() -> (rhythms: [Rhythm], labels: [String]) {
         let fm = FileManager.default
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let jerksDirPath = (documentsPath as NSString).appendingPathComponent("Jerks")
-        let jerksFiles = try! fm.contentsOfDirectory(atPath: jerksDirPath)
+        let rhythmsDirPath = (documentsPath as NSString).appendingPathComponent("Jerks")
+        let rhythmsFiles = try! fm.contentsOfDirectory(atPath: rhythmsDirPath)
         
-        var x: [[Float]] = []
-        var y: [Float] = []
+        var rhythmsData: [[Double]] = []
+        var labels: [String] = []
         
-        var maxJerkLength = 0
-        for (idx, file) in jerksFiles.enumerated() {
-            let filePath = (jerksDirPath as NSString).appendingPathComponent(file)
-            let fileContents = try! String(contentsOfFile: filePath, encoding: .utf8)
-            for jerkStr in fileContents.split(separator: "\n") {
-                let jerkData = jerkStr.split(separator: ",").map { Float($0)! }
-                if jerkData.count > maxJerkLength {
-                    maxJerkLength = jerkData.count
-                }
-                x.append(jerkData)
-                y.append(Float(idx))
+        for rhythmsFile in rhythmsFiles {
+            let rhythmsStr = try! String(contentsOfFile: (rhythmsDirPath as NSString).appendingPathComponent(rhythmsFile), encoding: .utf8)
+            let rhythmName = String(rhythmsFile.split(separator: ".").first!)
+            for rhythmStr in rhythmsStr.split(separator: "\n") {
+                let rhythmData = rhythmStr.split(separator: ",").map { Double($0)! }
+                rhythmsData.append(rhythmData)
+                labels.append(rhythmName)
             }
         }
         
-        for i in 0..<x.count {
-            let padding: [Float] = Array(repeating: 0, count: maxJerkLength - x[i].count)
-            x[i] = padding + x[i]
+        for i in 0..<rhythmsData.count {
+            let padding: [Double] = Array(repeating: 0, count: RhythmNet.kInputSize - rhythmsData[i].count)
+            rhythmsData[i] = padding + rhythmsData[i]
         }
-        
-        var shuffledIdx = Array(0..<x.count)
-        shuffledIdx.shuffle()
-        
-        var xShuffled: [[Float]] = []
-        var yShuffled: [Float] = []
-        
-        for idx in shuffledIdx {
-            xShuffled.append(x[idx])
-            yShuffled.append(y[idx])
-        }
-        
-        return (xShuffled, yShuffled, jerksFiles.count)
+
+        let rhythms = rhythmsData.map { data in Rhythm().then { $0.values = data } }
+        return (rhythms, labels)
     }
     
     private func trainModel(nEpochs: Int = 10, batchSize: Int = 16, valPct: Float = 0.1) {
-        _computeItem = DispatchWorkItem {
-            let (x, y, numberOfClasses) = self.loadData()
+        _computeItem = DispatchWorkItem { [unowned self] in
+            let (rhythms, labels) = self.loadData()
+            self._nn.train(rhythms: rhythms, labels: labels)
             
-            let valTo = Int(Float(x.count) * valPct)
-            let xVal = Array(x[0..<valTo])
-            let yVal = Array(y[0..<valTo])
-            let xTrain = Array(x[valTo..<(x.count - 1)])
-            let yTrain = Array(y[valTo..<(x.count - 1)])
-            
-            let xTrainBatches = xTrain.chunked(minSize: batchSize)
-            let yTrainBatches = yTrain.chunked(minSize: batchSize)
-            
-            self._nn = SimpleNeuralNet(inputUnits: x[0].count, l1Units: 200, l2Units: 2)
-            
-            for epoch in 0...nEpochs {
-                var logStr: String = ""
-                for (idx, (xBatch, yBatch)) in zip(xTrainBatches, yTrainBatches).enumerated() {
-                    if epoch > 0 {
-                        self._nn.trainBatch(epoch: epoch, xRaw: xBatch, yRaw: yBatch, xValRaw: xVal, yValRaw: yVal, numberOfClasses: numberOfClasses, learningRate: 0.001)
-                    }
-                    if idx == xTrainBatches.count - 1 {
-                        let (trainLoss, trainAcc) = self._nn.evaluate(xRaw: xBatch, yRaw: yBatch, numberOfClasses: numberOfClasses)
-                        logStr += "Epoch: \(epoch)/\(nEpochs), Train Loss: \(trainLoss), Train Acc: \(trainAcc)"
-                    }
-                }
-                let (valLoss, valAcc) = self._nn.evaluate(xRaw: xVal, yRaw: yVal, numberOfClasses: numberOfClasses)
-                logStr += ", Val Loss: \(valLoss), Val Acc: \(valAcc)\n\n"
-                DispatchQueue.main.async {
-                    self._logTextView.text += logStr
-                }
-            }
             DispatchQueue.main.async {
                 self._saveItem.isEnabled = true
             }

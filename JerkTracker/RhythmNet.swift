@@ -14,11 +14,12 @@ import swix_ios
 final class RhythmNet {
     typealias Prediction = (label: String, prob: Double)
     
-    private let kInputSize: Int = 120
+    static let kInputSize: Int = 120
     private let kNetName = "RhythmNet"
-    private let kNEpochs = 100
-    private let kBatchSize = 32
-    private let kValidationPct = 0.1
+    private let kNEpochs = 200
+    private let kBatchSize = 16
+    private let kValidationPct = 0.2
+    private let kLearningRate = 1e-3
     
     private let _model: Model
     
@@ -32,15 +33,14 @@ final class RhythmNet {
         _model.compile(loss: SoftmaxCrossentropy())
     }
     
-    private func saveParameters() {
-        let fm = FileManager.default
+    func saveParameters() {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let netDirPath = (documentsPath as NSString).appendingPathComponent(kNetName)
         try! _model.save(to: netDirPath)
     }
     
+    @discardableResult
     func restoreParameters() -> Bool  {
-        let fm = FileManager.default
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let netDirPath = (documentsPath as NSString).appendingPathComponent(kNetName)
         return try! _model.restore(from: netDirPath)
@@ -48,10 +48,11 @@ final class RhythmNet {
     
     func train(rhythms: [Rhythm], labels: [String]) {
         let x = matrix(rhythms.map { $0.values })
-        let y = vector(labels.enumerated().map { $0.offset })
+        let classLabels = Array(Set(labels)).sorted()
+        let numLabels = labels.map { classLabels.firstIndex(of: $0)! }
         _model.train(x: x,
-                     y: onehot(y, nClasses: unique(y).count),
-                     optimizer: SGDOptimizer(),
+                     y: onehot(vector(numLabels), nClasses: classLabels.count),
+                     optimizer: AdamOptimizer(learningRate: kLearningRate),
                      nEpochs: kNEpochs,
                      batchSize: kBatchSize,
                      validationPct: kValidationPct,
