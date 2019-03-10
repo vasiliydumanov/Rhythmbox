@@ -6,7 +6,6 @@ PODS:
   - SwiftMLP (0.0.1):
     - swix (~> 1.0.11)
   - swix (1.0.11)
-  - TensorSwift (0.2.2)
   - Then (2.4.0)
   - UIColor_Hex_Swift (4.2.0)
   - Zip (1.1.0)
@@ -15,7 +14,6 @@ DEPENDENCIES:
   - Charts
   - SnapKit
   - SwiftMLP (~> 0.0.1)
-  - TensorSwift
   - Then
   - UIColor_Hex_Swift (~> 4.2.0)
   - Zip
@@ -26,7 +24,6 @@ SPEC REPOS:
     - SnapKit
     - SwiftMLP
     - swix
-    - TensorSwift
     - Then
     - UIColor_Hex_Swift
     - Zip
@@ -36,11 +33,10 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftMLP: cf0efa5df7f9c6373983a2f8fca75ab9070a1191
   swix: 365fceb65c8c1c98ae8e697c2f16743d873eb9db
-  TensorSwift: 09217b0fb41272c6a178ba50b4bb01f2d10d88be
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
   UIColor_Hex_Swift: bc07fc197421ee896b9ed6dcfa2054b7fbf75145
   Zip: 8877eede3dda76bcac281225c20e71c25270774c
 
-PODFILE CHECKSUM: d376f80641d47929bdc38e72eeab7c6cb345868d
+PODFILE CHECKSUM: 5ebd6b5b76562c68faa75b594890b06e4ab2e44c
 
 COCOAPODS: 1.5.3

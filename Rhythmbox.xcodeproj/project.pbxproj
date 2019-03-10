@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05848A4D96AE121957467282 /* Pods_Rhythmbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12563126EE5406B330059B77 /* Pods_Rhythmbox.framework */; };
+		3E81859A2235863000988EFB /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81856D2235863000988EFB /* ChartView.swift */; };
+		3E81859B2235863000988EFB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81856E2235863000988EFB /* Theme.swift */; };
+		3E8185A02235863000988EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E8185752235863000988EFB /* Assets.xcassets */; };
+		3E8185A52235863000988EFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E81857B2235863000988EFB /* LaunchScreen.storyboard */; };
+		3E8185A62235863000988EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81857D2235863000988EFB /* AppDelegate.swift */; };
+		3E8185A82235863000988EFB /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185802235863000988EFB /* ArrayExtensions.swift */; };
+		3E8185A92235863000988EFB /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185812235863000988EFB /* Reusable.swift */; };
+		3E8185AA2235863000988EFB /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185822235863000988EFB /* UIImageExtensions.swift */; };
+		3E8185AB2235863000988EFB /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185832235863000988EFB /* UIColorExtensions.swift */; };
+		3E8185AC2235863000988EFB /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185862235863000988EFB /* RecordViewController.swift */; };
+		3E8185AD2235863000988EFB /* TrainChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185892235863000988EFB /* TrainChartsViewController.swift */; };
+		3E8185AE2235863000988EFB /* TrainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81858A2235863000988EFB /* TrainTabViewController.swift */; };
+		3E8185AF2235863000988EFB /* TrainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81858B2235863000988EFB /* TrainViewController.swift */; };
+		3E8185B02235863000988EFB /* TrainLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81858D2235863000988EFB /* TrainLogsViewController.swift */; };
+		3E8185B12235863000988EFB /* RhythmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E81858F2235863000988EFB /* RhythmsViewController.swift */; };
+		3E8185B22235863000988EFB /* RhythmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185902235863000988EFB /* RhythmCell.swift */; };
+		3E8185B32235863000988EFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185922235863000988EFB /* ViewController.swift */; };
+		3E8185B42235863000988EFB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185932235863000988EFB /* NavigationController.swift */; };
+		3E8185B52235863000988EFB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185942235863000988EFB /* TabBarController.swift */; };
+		3E8185B62235863000988EFB /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185962235863000988EFB /* PlayerViewController.swift */; };
+		3E8185B72235863000988EFB /* RhythmTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185982235863000988EFB /* RhythmTracker.swift */; };
+		3E8185B82235863000988EFB /* RhythmNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8185992235863000988EFB /* RhythmNet.swift */; };
+		3E8185BA223587C300988EFB /* DefaultRhythms in Resources */ = {isa = PBXBuildFile; fileRef = 3E8185B9223587C300988EFB /* DefaultRhythms */; };
+		3E8185BC223587CB00988EFB /* Music in Resources */ = {isa = PBXBuildFile; fileRef = 3E8185BB223587CB00988EFB /* Music */; };
+		3E8185C0223589A000988EFB /* RhythmNetWeightsDefault.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3E8185BF223589A000988EFB /* RhythmNetWeightsDefault.zip */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3EA971A6222989AC0082E71A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		12563126EE5406B330059B77 /* Pods_Rhythmbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rhythmbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E0CD55E221D62CA0010E6C3 /* Rhythmbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rhythmbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E81856D2235863000988EFB /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		3E81856E2235863000988EFB /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		3E8185752235863000988EFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3E81857C2235863000988EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3E81857D2235863000988EFB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3E81857E2235863000988EFB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E8185802235863000988EFB /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		3E8185812235863000988EFB /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		3E8185822235863000988EFB /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		3E8185832235863000988EFB /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		3E8185862235863000988EFB /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		3E8185892235863000988EFB /* TrainChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainChartsViewController.swift; sourceTree = "<group>"; };
+		3E81858A2235863000988EFB /* TrainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTabViewController.swift; sourceTree = "<group>"; };
+		3E81858B2235863000988EFB /* TrainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainViewController.swift; sourceTree = "<group>"; };
+		3E81858D2235863000988EFB /* TrainLogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainLogsViewController.swift; sourceTree = "<group>"; };
+		3E81858F2235863000988EFB /* RhythmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmsViewController.swift; sourceTree = "<group>"; };
+		3E8185902235863000988EFB /* RhythmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmCell.swift; sourceTree = "<group>"; };
+		3E8185922235863000988EFB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3E8185932235863000988EFB /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		3E8185942235863000988EFB /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3E8185962235863000988EFB /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		3E8185982235863000988EFB /* RhythmTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmTracker.swift; sourceTree = "<group>"; };
+		3E8185992235863000988EFB /* RhythmNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RhythmNet.swift; sourceTree = "<group>"; };
+		3E8185B9223587C300988EFB /* DefaultRhythms */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DefaultRhythms; sourceTree = "<group>"; };
+		3E8185BB223587CB00988EFB /* Music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Music; sourceTree = "<group>"; };
+		3E8185BF223589A000988EFB /* RhythmNetWeightsDefault.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = RhythmNetWeightsDefault.zip; sourceTree = "<group>"; };
+		4E5B7FD28D8A8DE36B124788 /* Pods-Rhythmbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhythmbox.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rhythmbox/Pods-Rhythmbox.release.xcconfig"; sourceTree = "<group>"; };
+		EF6B0B68E65443B1CE61A358 /* Pods-Rhythmbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rhythmbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rhythmbox/Pods-Rhythmbox.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E0CD55B221D62CA0010E6C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05848A4D96AE121957467282 /* Pods_Rhythmbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3E0CD555221D62CA0010E6C3 = {
+			isa = PBXGroup;
+			children = (
+				3E81856B2235863000988EFB /* Rhythmbox */,
+				3E0CD55F221D62CA0010E6C3 /* Products */,
+				CAE0E3CE62DFB9724C54A650 /* Pods */,
+				4284FFD05AA4F355A9CD378E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3E0CD55F221D62CA0010E6C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3E0CD55E221D62CA0010E6C3 /* Rhythmbox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3E81856B2235863000988EFB /* Rhythmbox */ = {
+			isa = PBXGroup;
+			children = (
+				3E81856C2235863000988EFB /* Misc */,
+				3E81856F2235863000988EFB /* Resources */,
+				3E81857F2235863000988EFB /* Extensions */,
+				3E8185842235863000988EFB /* Screens */,
+				3E8185972235863000988EFB /* Recognition */,
+			);
+			path = Rhythmbox;
+			sourceTree = "<group>";
+		};
+		3E81856C2235863000988EFB /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				3E81856D2235863000988EFB /* ChartView.swift */,
+				3E81856E2235863000988EFB /* Theme.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		3E81856F2235863000988EFB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185BF223589A000988EFB /* RhythmNetWeightsDefault.zip */,
+				3E8185BB223587CB00988EFB /* Music */,
+				3E8185B9223587C300988EFB /* DefaultRhythms */,
+				3E8185752235863000988EFB /* Assets.xcassets */,
+				3E81857B2235863000988EFB /* LaunchScreen.storyboard */,
+				3E81857D2235863000988EFB /* AppDelegate.swift */,
+				3E81857E2235863000988EFB /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3E81857F2235863000988EFB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185802235863000988EFB /* ArrayExtensions.swift */,
+				3E8185812235863000988EFB /* Reusable.swift */,
+				3E8185822235863000988EFB /* UIImageExtensions.swift */,
+				3E8185832235863000988EFB /* UIColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3E8185842235863000988EFB /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185852235863000988EFB /* Recording */,
+				3E8185872235863000988EFB /* Training */,
+				3E81858E2235863000988EFB /* Rhythms */,
+				3E8185912235863000988EFB /* Main */,
+				3E8185952235863000988EFB /* Player */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		3E8185852235863000988EFB /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185862235863000988EFB /* RecordViewController.swift */,
+			);
+			path = Recording;
+			sourceTree = "<group>";
+		};
+		3E8185872235863000988EFB /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185882235863000988EFB /* TrainCharts */,
+				3E81858A2235863000988EFB /* TrainTabViewController.swift */,
+				3E81858B2235863000988EFB /* TrainViewController.swift */,
+				3E81858C2235863000988EFB /* TrainLogs */,
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
+		3E8185882235863000988EFB /* TrainCharts */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185892235863000988EFB /* TrainChartsViewController.swift */,
+			);
+			path = TrainCharts;
+			sourceTree = "<group>";
+		};
+		3E81858C2235863000988EFB /* TrainLogs */ = {
+			isa = PBXGroup;
+			children = (
+				3E81858D2235863000988EFB /* TrainLogsViewController.swift */,
+			);
+			path = TrainLogs;
+			sourceTree = "<group>";
+		};
+		3E81858E2235863000988EFB /* Rhythms */ = {
+			isa = PBXGroup;
+			children = (
+				3E81858F2235863000988EFB /* RhythmsViewController.swift */,
+				3E8185902235863000988EFB /* RhythmCell.swift */,
+			);
+			path = Rhythms;
+			sourceTree = "<group>";
+		};
+		3E8185912235863000988EFB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185922235863000988EFB /* ViewController.swift */,
+				3E8185932235863000988EFB /* NavigationController.swift */,
+				3E8185942235863000988EFB /* TabBarController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3E8185952235863000988EFB /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185962235863000988EFB /* PlayerViewController.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		3E8185972235863000988EFB /* Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				3E8185982235863000988EFB /* RhythmTracker.swift */,
+				3E8185992235863000988EFB /* RhythmNet.swift */,
+			);
+			path = Recognition;
+			sourceTree = "<group>";
+		};
+		4284FFD05AA4F355A9CD378E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12563126EE5406B330059B77 /* Pods_Rhythmbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CAE0E3CE62DFB9724C54A650 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EF6B0B68E65443B1CE61A358 /* Pods-Rhythmbox.debug.xcconfig */,
+				4E5B7FD28D8A8DE36B124788 /* Pods-Rhythmbox.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3E0CD55D221D62CA0010E6C3 /* Rhythmbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E0CD570221D62CB0010E6C3 /* Build configuration list for PBXNativeTarget "Rhythmbox" */;
+			buildPhases = (
+				88AACB1A2EEDB6FCA2E42A6E /* [CP] Check Pods Manifest.lock */,
+				3E0CD55A221D62CA0010E6C3 /* Sources */,
+				3E0CD55B221D62CA0010E6C3 /* Frameworks */,
+				3E0CD55C221D62CA0010E6C3 /* Resources */,
+				3EA971A6222989AC0082E71A /* Embed Frameworks */,
+				294120151DD0DEF392047AA7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rhythmbox;
+			productName = JerkTracker;
+			productReference = 3E0CD55E221D62CA0010E6C3 /* Rhythmbox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3E0CD556221D62CA0010E6C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Distillery;
+				TargetAttributes = {
+					3E0CD55D221D62CA0010E6C3 = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 3E0CD559221D62CA0010E6C3 /* Build configuration list for PBXProject "Rhythmbox" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3E0CD555221D62CA0010E6C3;
+			productRefGroup = 3E0CD55F221D62CA0010E6C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3E0CD55D221D62CA0010E6C3 /* Rhythmbox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E0CD55C221D62CA0010E6C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8185A52235863000988EFB /* LaunchScreen.storyboard in Resources */,
+				3E8185BC223587CB00988EFB /* Music in Resources */,
+				3E8185BA223587C300988EFB /* DefaultRhythms in Resources */,
+				3E8185A02235863000988EFB /* Assets.xcassets in Resources */,
+				3E8185C0223589A000988EFB /* RhythmNetWeightsDefault.zip in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		294120151DD0DEF392047AA7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Rhythmbox/Pods-Rhythmbox-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMLP/SwiftMLP.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${BUILT_PRODUCTS_DIR}/swix/swix.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMLP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/swix.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rhythmbox/Pods-Rhythmbox-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88AACB1A2EEDB6FCA2E42A6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rhythmbox-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3E0CD55A221D62CA0010E6C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8185B32235863000988EFB /* ViewController.swift in Sources */,
+				3E8185AF2235863000988EFB /* TrainViewController.swift in Sources */,
+				3E8185A62235863000988EFB /* AppDelegate.swift in Sources */,
+				3E8185B02235863000988EFB /* TrainLogsViewController.swift in Sources */,
+				3E8185AD2235863000988EFB /* TrainChartsViewController.swift in Sources */,
+				3E8185B62235863000988EFB /* PlayerViewController.swift in Sources */,
+				3E8185B12235863000988EFB /* RhythmsViewController.swift in Sources */,
+				3E8185B52235863000988EFB /* TabBarController.swift in Sources */,
+				3E8185B22235863000988EFB /* RhythmCell.swift in Sources */,
+				3E8185B82235863000988EFB /* RhythmNet.swift in Sources */,
+				3E8185AB2235863000988EFB /* UIColorExtensions.swift in Sources */,
+				3E81859A2235863000988EFB /* ChartView.swift in Sources */,
+				3E8185B42235863000988EFB /* NavigationController.swift in Sources */,
+				3E8185AC2235863000988EFB /* RecordViewController.swift in Sources */,
+				3E81859B2235863000988EFB /* Theme.swift in Sources */,
+				3E8185AA2235863000988EFB /* UIImageExtensions.swift in Sources */,
+				3E8185A82235863000988EFB /* ArrayExtensions.swift in Sources */,
+				3E8185B72235863000988EFB /* RhythmTracker.swift in Sources */,
+				3E8185A92235863000988EFB /* Reusable.swift in Sources */,
+				3E8185AE2235863000988EFB /* TrainTabViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3E81857B2235863000988EFB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E81857C2235863000988EFB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3E0CD56E221D62CB0010E6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3E0CD56F221D62CB0010E6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3E0CD571221D62CB0010E6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF6B0B68E65443B1CE61A358 /* Pods-Rhythmbox.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8X676Z47A4;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Rhythmbox/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weezlabs.Rhythmbox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E0CD572221D62CB0010E6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E5B7FD28D8A8DE36B124788 /* Pods-Rhythmbox.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8X676Z47A4;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "$(SRCROOT)/Rhythmbox/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.weezlabs.Rhythmbox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3E0CD559221D62CA0010E6C3 /* Build configuration list for PBXProject "Rhythmbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E0CD56E221D62CB0010E6C3 /* Debug */,
+				3E0CD56F221D62CB0010E6C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E0CD570221D62CB0010E6C3 /* Build configuration list for PBXNativeTarget "Rhythmbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E0CD571221D62CB0010E6C3 /* Debug */,
+				3E0CD572221D62CB0010E6C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3E0CD556221D62CA0010E6C3 /* Project object */;
+}
