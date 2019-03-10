@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1BB7EAB513E05B303AE6F88C78F64FD2"
+               BlueprintIdentifier = "834B2388F7DD302C92B466B8B7D115D6"
                BuildableName = "Pods_JerkTracker.framework"
                BlueprintName = "Pods-JerkTracker"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1BB7EAB513E05B303AE6F88C78F64FD2"
+            BlueprintIdentifier = "834B2388F7DD302C92B466B8B7D115D6"
             BuildableName = "Pods_JerkTracker.framework"
             BlueprintName = "Pods-JerkTracker"
             ReferencedContainer = "container:Pods.xcodeproj">

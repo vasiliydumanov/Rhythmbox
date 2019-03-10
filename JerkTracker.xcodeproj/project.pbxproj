@@ -28,11 +28,10 @@
 		3E99A352222E81F900EBE4E1 /* DefaultRhythms in Resources */ = {isa = PBXBuildFile; fileRef = 3E99A351222E81F900EBE4E1 /* DefaultRhythms */; };
 		3E99A355222E941A00EBE4E1 /* Music in Resources */ = {isa = PBXBuildFile; fileRef = 3E99A354222E941A00EBE4E1 /* Music */; };
 		3E99A357222EBB4C00EBE4E1 /* RhythmTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E99A356222EBB4C00EBE4E1 /* RhythmTracker.swift */; };
-		3EA971A4222989AC0082E71A /* SwiftMLP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A3222989AC0082E71A /* SwiftMLP.framework */; };
-		3EA971A5222989AC0082E71A /* SwiftMLP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A3222989AC0082E71A /* SwiftMLP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3EA31E2922317C6000F91C49 /* TrainChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA31E2822317C6000F91C49 /* TrainChartsViewController.swift */; };
+		3EA31E2B22317CC900F91C49 /* TrainLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA31E2A22317CC900F91C49 /* TrainLogsViewController.swift */; };
+		3EA31E2D22317D8400F91C49 /* TrainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA31E2C22317D8400F91C49 /* TrainTabViewController.swift */; };
 		3EA971A822298A820082E71A /* RhythmNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA971A722298A820082E71A /* RhythmNet.swift */; };
-		3EA971AA22298FDB0082E71A /* swix_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A922298FDB0082E71A /* swix_ios.framework */; };
-		3EA971AB22298FDB0082E71A /* swix_ios.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA971A922298FDB0082E71A /* swix_ios.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAA0ED35CDF94931F2A23429 /* Pods_JerkTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481EFC4BE2EFFB5BD887D62 /* Pods_JerkTracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +42,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3EA971A5222989AC0082E71A /* SwiftMLP.framework in Embed Frameworks */,
-				3EA971AB22298FDB0082E71A /* swix_ios.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,9 +74,10 @@
 		3E99A351222E81F900EBE4E1 /* DefaultRhythms */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DefaultRhythms; sourceTree = "<group>"; };
 		3E99A354222E941A00EBE4E1 /* Music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Music; sourceTree = "<group>"; };
 		3E99A356222EBB4C00EBE4E1 /* RhythmTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTracker.swift; sourceTree = "<group>"; };
-		3EA971A3222989AC0082E71A /* SwiftMLP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftMLP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EA31E2822317C6000F91C49 /* TrainChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainChartsViewController.swift; sourceTree = "<group>"; };
+		3EA31E2A22317CC900F91C49 /* TrainLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainLogsViewController.swift; sourceTree = "<group>"; };
+		3EA31E2C22317D8400F91C49 /* TrainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTabViewController.swift; sourceTree = "<group>"; };
 		3EA971A722298A820082E71A /* RhythmNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmNet.swift; sourceTree = "<group>"; };
-		3EA971A922298FDB0082E71A /* swix_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = swix_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9824339C24BAFFF80A485105 /* Pods-JerkTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JerkTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,8 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EA971AA22298FDB0082E71A /* swix_ios.framework in Frameworks */,
-				3EA971A4222989AC0082E71A /* SwiftMLP.framework in Frameworks */,
 				AAA0ED35CDF94931F2A23429 /* Pods_JerkTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,8 +113,6 @@
 		3E0CD555221D62CA0010E6C3 = {
 			isa = PBXGroup;
 			children = (
-				3EA971A922298FDB0082E71A /* swix_ios.framework */,
-				3EA971A3222989AC0082E71A /* SwiftMLP.framework */,
 				3E0CD560221D62CA0010E6C3 /* JerkTracker */,
 				3E0CD55F221D62CA0010E6C3 /* Products */,
 				3C7EB14CEA52DA653D9C82EB /* Pods */,
@@ -157,7 +151,10 @@
 		3E727C25222FADDB004ED73B /* Training */ = {
 			isa = PBXGroup;
 			children = (
+				3EA31E2722317B5600F91C49 /* TrainLogs */,
+				3EA31E2622317B4500F91C49 /* TrainCharts */,
 				3E746B4C221F34A50042919E /* TrainViewController.swift */,
+				3EA31E2C22317D8400F91C49 /* TrainTabViewController.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -242,6 +239,22 @@
 				3E746B36221DA33B0042919E /* RecordViewController.swift */,
 			);
 			path = Recording;
+			sourceTree = "<group>";
+		};
+		3EA31E2622317B4500F91C49 /* TrainCharts */ = {
+			isa = PBXGroup;
+			children = (
+				3EA31E2822317C6000F91C49 /* TrainChartsViewController.swift */,
+			);
+			path = TrainCharts;
+			sourceTree = "<group>";
+		};
+		3EA31E2722317B5600F91C49 /* TrainLogs */ = {
+			isa = PBXGroup;
+			children = (
+				3EA31E2A22317CC900F91C49 /* TrainLogsViewController.swift */,
+			);
+			path = TrainLogs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,10 +367,12 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-JerkTracker/Pods-JerkTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMLP/SwiftMLP.framework",
 				"${BUILT_PRODUCTS_DIR}/TensorSwift/TensorSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Zip/Zip.framework",
+				"${BUILT_PRODUCTS_DIR}/swix/swix.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -365,10 +380,12 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMLP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TensorSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Zip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/swix.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -388,10 +405,12 @@
 				3E99A33C222D970F00EBE4E1 /* PlayerViewController.swift in Sources */,
 				3E746B37221DA33B0042919E /* RecordViewController.swift in Sources */,
 				3E746B4F221F3DC60042919E /* ArrayExtensions.swift in Sources */,
+				3EA31E2B22317CC900F91C49 /* TrainLogsViewController.swift in Sources */,
 				3E7D01E1221D68F800B6ED39 /* ChartView.swift in Sources */,
 				3E99A33E222D975D00EBE4E1 /* NavigationController.swift in Sources */,
 				3EA971A822298A820082E71A /* RhythmNet.swift in Sources */,
 				3E25CD9D222FCEBA005FF479 /* Theme.swift in Sources */,
+				3EA31E2922317C6000F91C49 /* TrainChartsViewController.swift in Sources */,
 				3E99A346222D9BEE00EBE4E1 /* Reusable.swift in Sources */,
 				3E99A340222D9AC500EBE4E1 /* RhythmCell.swift in Sources */,
 				3E746B4D221F34A50042919E /* TrainViewController.swift in Sources */,
@@ -399,6 +418,7 @@
 				3E7D01E3221D749400B6ED39 /* UIColorExtensions.swift in Sources */,
 				3E99A357222EBB4C00EBE4E1 /* RhythmTracker.swift in Sources */,
 				3E25CDA122307454005FF479 /* UIImageExtensions.swift in Sources */,
+				3EA31E2D22317D8400F91C49 /* TrainTabViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,7 +559,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8X676Z47A4;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JerkTracker/swix/objc",
@@ -564,7 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8X676Z47A4;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JerkTracker/swix/objc",

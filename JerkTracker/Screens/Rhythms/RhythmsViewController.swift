@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import swix_ios
+import swix
 import Zip
 
 enum RhythmType : Int, CaseIterable {
@@ -51,7 +51,7 @@ enum RhythmType : Int, CaseIterable {
 }
 
 class RhythmsViewController : ViewController {
-    private let kInfo = "Here you can create brand new samples of rhythmic patterns for a given action (Play/Pause, Next, Previous) or add new to existing ones (see \"Record\" screen help for more on this). Please note that all samples for any given action must represent the same rhythmic pattern."
+    private let kInfo = "Here you can create brand new samples of rhythmic patterns for a given action (Play/Pause, Next, Previous) or add new to existing ones (see \"Record\" screen help for more on this). Please note that all samples for any given action must represent the same rhythmic pattern. Note that neural network will not be able to recorgnize your custom samples before you train it (\"Options\" -> \"Train\")."
     
     private var _rhythmsListCV: UICollectionView!
     fileprivate var _nSamplesList: [Int]!
@@ -69,7 +69,7 @@ class RhythmsViewController : ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         try! moveDefaultRhythmsToAppDocumentsDirIfNeeded()
-        try! RhythmNet.restoreDefaultParams()
+        try! RhythmNet.restoreDefaultParamsIfNeeded()
         setupNavBar()
         setupRhythmsList()
     }
@@ -161,7 +161,7 @@ class RhythmsViewController : ViewController {
         )
         alert.addAction(
             UIAlertAction(title: "Restore Default Weights", style: .destructive) { _ in
-                try! RhythmNet.restoreDefaultParams()
+                try! RhythmNet.restoreDefaultParamsIfNeeded()
             }
         )
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

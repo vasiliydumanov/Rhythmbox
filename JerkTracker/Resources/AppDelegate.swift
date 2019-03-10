@@ -7,18 +7,27 @@
 //
 
 import UIKit
-import TensorSwift
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        configureAudioSession()
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootVC = TabBarController()
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    private func configureAudioSession() {
+        do {
+
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, mode: .default, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch { }
     }
 
 }

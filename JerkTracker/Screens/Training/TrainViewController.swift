@@ -12,18 +12,21 @@ import TensorSwift
 
 
 final class TrainViewController : ViewController {
-    private let kInfo = "Tap \"Train\" to train model on existing samples. Observe training progress. Don't forget to \"Save\" trained weights after the training is over. Good Luck! 😉"
+    private let kInfo = "Tap \"Train\" to train model on existing samples. Observe training progress on \"Charts\" and \"Logs\" tabs. You can always \"Stop\" training if you feel comfortable with achieved accuracy / loss metrics' values. Note that these metrics are not guaranteed to converge even to reasonably good values if you change default samples. In this case you may need to tweak model training parameters or even change its architecture. Also keep in mind that training process can sometimes be unstable between runs, so you can always repeat training by tapping repeat (curved arrow) button, Don't forget to \"Save\" new weights after the training is over. Good Luck! 😉"
     
     private let _computationQueue = DispatchQueue(label: "compute_queue")
     private var _repeatTrainingItem: UIBarButtonItem!
-    private var _tasButton: UIButton!
-    private var _logTextView: UITextView!
-    private var _hintLbl: UILabel!
+    private var _multiButton: UIButton!
     
     private var _nn: RhythmNet!
     
+    private var _isTraining = false
     private var _wasTrained = false
     private var _wasSaved = false
+    
+    private var _slider: UIView!
+    private var _tabBtns: [UIButton] = []
+    private var _childControllers: [TrainTabViewController] = []
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,9 +42,8 @@ final class TrainViewController : ViewController {
         super.viewDidLoad()
         _nn = RhythmNet()
         setupNavBar()
-        setupTrainAndSaveButton()
-        setupTextView()
-        setupHint()
+        setupMultiButton()
+        setupTabs()
     }
     
     private func setupNavBar() {
@@ -57,19 +59,23 @@ final class TrainViewController : ViewController {
         }
         
         navigationItem.rightBarButtonItems = [infoItem, _repeatTrainingItem]
+        
+        navigationController?.navigationBar.do {
+            $0.shadowImage = UIImage()
+        }
     }
     
-    private func setupTrainAndSaveButton() {
-        _tasButton = UIButton(type: .custom).then {
+    private func setupMultiButton() {
+        _multiButton = UIButton(type: .custom).then {
             $0.setBackgroundImage(UIImage(color: Theme.default.cardsHeader), for: .normal)
-            $0.setBackgroundImage(UIImage(color: UIColor.darkGray), for: .disabled)
+            $0.setBackgroundImage(UIImage(color: UIColor("#c62828")), for: .selected)
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
             $0.setTitle("Start training", for: .normal)
         }
-        _tasButton.addTarget(self, action: #selector(trainOrSaveAction), for: .touchUpInside)
-        view.addSubview(_tasButton)
-        _tasButton.snp.makeConstraints { make in
+        _multiButton.addTarget(self, action: #selector(multiAction), for: .touchUpInside)
+        view.addSubview(_multiButton)
+        _multiButton.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -77,37 +83,70 @@ final class TrainViewController : ViewController {
         }
     }
     
-    private func setupTextView() {
-        _logTextView = UITextView().then {
-            $0.backgroundColor = .clear
-            $0.textColor = .white
-            $0.isEditable = false
-            $0.isSelectable = false
-            $0.text = ""
-            $0.font = UIFont.systemFont(ofSize: 16)
+    private func setupTabs() {
+        let tabsContainer = UIStackView().then {
+            $0.axis = .horizontal
+            $0.distribution = .fillEqually
         }
-        view.addSubview(_logTextView)
-        _logTextView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+        view.addSubview(tabsContainer)
+        tabsContainer.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalTo(_tasButton.snp.top)
+            make.top.equalToSuperview()
+            make.height.equalTo(40)
         }
+        
+        let tabNames: [String] = ["Charts", "Logs"]
+        for (idx, tn) in tabNames.enumerated() {
+            let btn = UIButton(type: .custom).then {
+                $0.tag = idx
+                $0.setTitle(tn, for: .normal)
+                $0.setTitleColor(.white, for: .normal)
+                $0.backgroundColor = Theme.default.barsAndHeaders
+                $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+                $0.addTarget(self, action: #selector(switchTabs(_:)), for: .touchUpInside)
+            }
+            tabsContainer.addArrangedSubview(btn)
+            _tabBtns.append(btn)
+        }
+        
+        _slider = UIView().then {
+            $0.backgroundColor = Theme.default.cardsBody
+        }
+        tabsContainer.addSubview(_slider)
+
+        _childControllers = [
+            TrainChartsViewController(),
+            TrainLogsViewController()
+        ]
+        let childContainer = UIView()
+        view.addSubview(childContainer)
+        childContainer.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalTo(tabsContainer.snp.bottom).offset(1)
+            make.bottom.equalTo(_multiButton.snp.top)
+        }
+        
+        for cc in _childControllers {
+            addChild(cc)
+            cc.view.frame = childContainer.bounds
+//            cc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            childContainer.addSubview(cc.view)
+            cc.didMove(toParent: self)
+        }
+        switchTabs(_tabBtns[0])
     }
     
-    private func setupHint() {
-        _hintLbl = UILabel().then {
-            $0.text = "Logs will appear here"
-            $0.textColor = UIColor.lightGray
-            $0.font = UIFont.boldSystemFont(ofSize: 16)
-            $0.textAlignment = .center
-            $0.numberOfLines = 0
+    @objc private func switchTabs(_ btn: UIButton) {
+        for (idx, cc) in _childControllers.enumerated() {
+            cc.view.isHidden = idx != btn.tag
         }
-        view.addSubview(_hintLbl)
-        _hintLbl.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.centerY.equalTo(_logTextView)
+        _slider.snp.remakeConstraints { make in
+            make.width.equalTo(UIScreen.main.bounds.width / 2)
+            make.height.equalTo(2)
+            make.bottom.equalToSuperview()
+            make.centerX.equalTo(btn)
         }
     }
     
@@ -136,45 +175,48 @@ final class TrainViewController : ViewController {
     private func trainModel(nEpochs: Int = 10, batchSize: Int = 16, valPct: Float = 0.1) {
         _wasTrained = false
         _wasSaved = false
-        _logTextView.text = ""
-        _tasButton.do {
-            $0.isEnabled = false
-            $0.setTitle("Training...", for: .normal)
-        }
-        _hintLbl.isHidden = true
+        _childControllers.forEach { $0.onTrainBegan() }
+        _multiButton.isSelected = true
+        _repeatTrainingItem.isEnabled = false
         _computationQueue.async { [weak self] in
             let (rhythms, labels) = self!.loadData()
+            self?._isTraining = true
+            self?._nn.reset()
             self?._nn.train(rhythms: rhythms, labels: labels, onEpochEnd: { epoch, log in
                 guard let `self` = self else { return }
                 DispatchQueue.main.async {
                     UIView.performWithoutAnimation {
-                        self._tasButton.setTitle("Training (\(epoch)/\(RhythmNet.kNEpochs))", for: .normal)
+                        self._multiButton.setTitle("Stop (Training (\(epoch)/\(RhythmNet.kNEpochs)))", for: .normal)
                     }
-                    var resLogStr = "\(log[.epochLogStr] as! String)\n\n"
-                    if let esLogStr = log[.esLogStr] as? String {
-                        resLogStr += "\(esLogStr)\n\n"
-                    }
-                    self._logTextView.text += resLogStr
+                    self._childControllers.forEach { $0.onEpochEnd(epoch: epoch, log: log) }
                 }
             })
             
+            self?._isTraining = false
+            self?._wasTrained = true
             DispatchQueue.main.async {
-                self?._wasTrained = true
-                self?._tasButton.do {
-                    $0.isEnabled = true
+                self?._repeatTrainingItem.isEnabled = true
+                self?._childControllers.forEach { $0.onTrainEnded() }
+                self?._multiButton.do {
+                    $0.isSelected = false
                     $0.setTitle("Save", for: .normal)
                 }
-                self?._repeatTrainingItem.isEnabled = true
             }
         }
     }
     
-    @objc private func trainOrSaveAction() {
-        if !_wasTrained {
+    @objc private func multiAction() {
+        if _isTraining {
+            stopTraining()
+        } else if !_wasTrained {
             trainModel()
         } else {
             saveParameters()
         }
+    }
+    
+    private func stopTraining() {
+        _nn?.cancelTraining()
     }
     
     private func saveParameters() {
@@ -188,7 +230,9 @@ final class TrainViewController : ViewController {
     
     @objc private func closeAction() {
         guard _wasTrained && !_wasSaved else {
-            _nn?.cancelTraining()
+            DispatchQueue.global().async { [weak self] in
+                self?._nn?.cancelTraining()
+            }
             dismiss(animated: true)
             return
         }

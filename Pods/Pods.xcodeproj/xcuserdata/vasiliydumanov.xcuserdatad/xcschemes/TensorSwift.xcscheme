@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C24DCCC31175E475078EDFBDE16FEA5A"
+               BlueprintIdentifier = "BC9B78CC2A1428205632F855844BA618"
                BlueprintName = "TensorSwift"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "TensorSwift.framework">

@@ -10,8 +10,12 @@ import UIKit
 import AVFoundation
 
 class PlayerViewController: ViewController {
+    private let kInfo = "This is the screen for experimenting with model inference abilities. The app is not able to record motion data in background due to iOS system limitations, therefore make sure that the phone is not locked. When you are ready, tap or shake the phone with the same rhythmic patterns you used for samples recording to invoke 1 of 3 actions: \"Play/Pause\", \"Next\" or \"Previous\". Have fun!"
+    
     private typealias PlayerData = (trackName: String, player: AVAudioPlayer)
     
+    private var _pocketModeView: UIStackView!
+    private var _controlsStack: UIStackView!
     private var _trackNameLbl: UILabel!
     private var _playPauseBtn: UIButton!
     private var _playersData: [PlayerData] = []
@@ -21,6 +25,9 @@ class PlayerViewController: ViewController {
     private var _tracker: RhythmTracker!
     private var _net: RhythmNet!
     
+    private var _isPocketModeEnabled: Bool = false
+    private var _isViewVisible = false
+
     init() {
         super.init(nibName: nil, bundle: nil)
         title = "Player"
@@ -32,34 +39,108 @@ class PlayerViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavBar()
         try! setupPlayers()
-        setupUI()
+        setupPocketMode()
+        setupPlaybackControls()
+        setupTrackInfo()
         setupProximityMonitoring()
         setupRhythmRecognition()
     }
     
-    private func setupUI() {
+    private func updateTrackingState() {
+        let trackingAllowed = (!_isPocketModeEnabled || UIDevice.current.proximityState) && _isViewVisible
+        trackingAllowed ? _tracker.start() : _tracker.stop()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        _isViewVisible = true
+        updateTrackingState()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        _isViewVisible = false
+        updateTrackingState()
+        if _isPlaying {
+            playPauseAction()
+        }
+    }
+    
+    private func setupNavBar() {
+        let infoView = UIButton(type: .infoLight)
+        infoView.addTarget(self, action: #selector(infoAction), for: .touchUpInside)
+        let infoItem = UIBarButtonItem(customView: infoView)
+        navigationItem.rightBarButtonItem = infoItem
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    private func setupPocketMode() {
+        let pmHeight: CGFloat = 60
+        _pocketModeView = UIStackView().then {
+            $0.axis = .horizontal
+            $0.spacing = 20
+            $0.alignment = .center
+            $0.isLayoutMarginsRelativeArrangement = true
+            $0.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        }
+        view.addSubview(_pocketModeView)
+        _pocketModeView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
+            make.height.equalTo(pmHeight)
+        }
+        
+        let pocketViewBg = UIView(frame: _pocketModeView.bounds).then {
+            $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            $0.backgroundColor = Theme.default.barsAndHeaders
+            $0.layer.cornerRadius = pmHeight / 2
+        }
+        _pocketModeView.addSubview(pocketViewBg)
+        
+        let lbl = UILabel().then {
+            $0.textColor = .white
+            $0.font = UIFont.systemFont(ofSize: 18)
+            $0.text = "Pocket Mode"
+        }
+        _pocketModeView.addArrangedSubview(lbl)
+        
+        let swtch = UISwitch().then {
+            $0.onTintColor = Theme.default.cardsHeader
+            $0.addTarget(self, action: #selector(pocketModeToggled), for: .touchUpInside)
+        }
+        _pocketModeView.addArrangedSubview(swtch)
+    }
+    
+    @objc private func pocketModeToggled() {
+        _isPocketModeEnabled.toggle()
+        updateTrackingState()
+    }
+    
+    private func setupPlaybackControls() {
         let stackHeight: CGFloat = 60
-        let controlsStack = UIStackView().then {
+        _controlsStack = UIStackView().then {
             $0.axis = .horizontal
             $0.alignment = .center
             $0.distribution = .equalSpacing
             $0.isLayoutMarginsRelativeArrangement = true
             $0.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
         }
-        view.addSubview(controlsStack)
-        controlsStack.snp.makeConstraints { make in
+        view.addSubview(_controlsStack)
+        _controlsStack.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
             make.height.equalTo(stackHeight)
         }
         
-        let controlsBg = UIView(frame: controlsStack.bounds).then {
+        let controlsBg = UIView(frame: _controlsStack.bounds).then {
             $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             $0.backgroundColor = Theme.default.cardsBody
         }
-        controlsStack.addSubview(controlsBg)
+        _controlsStack.addSubview(controlsBg)
         
         typealias ButtonData = (icon: String, selector: Selector)
         let buttonsData: [ButtonData] = [
@@ -80,21 +161,23 @@ class PlayerViewController: ViewController {
                 $0.imageEdgeInsets = .zero
                 $0.addTarget(self, action: bd.selector, for: .touchUpInside)
             }
-            controlsStack.addArrangedSubview(btn)
+            _controlsStack.addArrangedSubview(btn)
             btn.snp.makeConstraints { make in
                 make.size.equalTo(buttonSize)
             }
             buttons.append(btn)
         }
         _playPauseBtn = buttons[1]
-        
+    }
+    
+    private func setupTrackInfo() {
         let trackInfoContainer = UIView()
         view.addSubview(trackInfoContainer)
         trackInfoContainer.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(_pocketModeView.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalTo(controlsStack.snp.top)
+            make.bottom.equalTo(_controlsStack.snp.top)
         }
         
         _trackNameLbl = UILabel().then {
@@ -118,8 +201,8 @@ class PlayerViewController: ViewController {
     }
     
     @objc private func proximityStateChanged() {
-        let isClose = UIDevice.current.proximityState
-        isClose ? _tracker.start() : _tracker.stop()
+        guard _isPocketModeEnabled else { return }
+        updateTrackingState()
     }
     
     private func setupRhythmRecognition() {
@@ -136,8 +219,6 @@ class PlayerViewController: ViewController {
     }
     
     private func setupPlayers() throws {
-        try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-        try AVAudioSession.sharedInstance().setActive(true)
         let tracksPath = (Bundle.main.resourcePath! as NSString).appendingPathComponent("Music")
         let tracks = try FileManager.default.contentsOfDirectory(atPath: tracksPath)
         for track in tracks {
@@ -188,6 +269,12 @@ class PlayerViewController: ViewController {
     
     @objc private func prevAction() {
         set(track: prevTrack())
+    }
+    
+    @objc private func infoAction() {
+        let alert = UIAlertController(title: nil, message: kInfo, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     private func set(track: PlayerData) {

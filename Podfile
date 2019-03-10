@@ -12,4 +12,5 @@ target 'JerkTracker' do
   pod 'Zip'
   pod 'UIColor_Hex_Swift', '~> 4.2.0'
   pod 'Charts'
+  pod 'SwiftMLP', '~> 0.0.1'
 end

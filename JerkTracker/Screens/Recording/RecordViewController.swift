@@ -10,20 +10,22 @@ import UIKit
 import Speech
 import AVFoundation
 import CoreMotion
-import swix_ios
+import swix
 
 enum RecordingMode {
     case add, create
 }
 
 class RecordViewController: ViewController {
-    private let kInfo = "Put your phone in a pocket, stand still and say \"Start\". You should feel phone vibrating which means that recording has began. Tap the phone with chosen rhythmic pattern. You will also feel phone vibrating after pattern has been recorded. Continue tapping the phone with the same rythmic pattern >= 20 times. 20 is big enough for default neural net to reach reasonably high accuracy on test test, though the rule of thumb here is: the more, the better. YMMV for more complex rhythmic patterns. When you are ready to stop recording, say \"Stop\"."
+    private let kInfo = "Say \"Start\" to begin recording. You should feel phone vibrating which means that recording has began. Tap or shake the phone with chosen rhythmic pattern. Note that by default pattern duration cannot exceed 2s (120 motion data readings). You will also feel phone vibrating after pattern has been recorded. Continue tapping the phone with the same rythmic pattern >= 20 times. 20 is big enough for default neural net to reach reasonably high accuracy on test test, though the rule of thumb here is: the more, the better. YMMV for more complex rhythmic patterns. When you are ready to stop recording, say \"Stop\"."
     
     private let _audioEngine = AVAudioEngine()
     private var _recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var _recognitionTask: SFSpeechRecognitionTask?
     private let _speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
     private var _chartView: ChartView!
+    private var _recordedRythmsCounter: Int = 0
+    private var _cntrLbl: UILabel!
     
     private var _newRhythmRecordingBeganOnce = false
     private var _isRecording = false
@@ -53,7 +55,8 @@ class RecordViewController: ViewController {
         view.backgroundColor = Theme.default.cardsBody
         checkSpeechRecognitionPermissions()
         setupNavBar()
-        setupUI()
+        setupChart()
+        setupCounterLabel()
         setupRhythmTracker()
     }
     
@@ -70,7 +73,7 @@ class RecordViewController: ViewController {
         navigationItem.rightBarButtonItem = infoItem
     }
     
-    private func setupUI() {
+    private func setupChart() {
         _chartView = ChartView(frame: view.bounds).then {
             $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             $0.yRange = (0...5)
@@ -86,6 +89,36 @@ class RecordViewController: ViewController {
             make.bottom.equalToSuperview().offset(-40)
             make.top.equalToSuperview()
         }
+    }
+    
+    private func setupCounterLabel() {
+        let cntrRadius: CGFloat = 60
+        let cntrView = UIView().then {
+            $0.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+            $0.layer.cornerRadius = cntrRadius / 2
+        }
+        view.addSubview(cntrView)
+        cntrView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(40)
+            make.width.equalTo(cntrRadius)
+            make.height.equalTo(cntrRadius)
+        }
+        
+        _cntrLbl = UILabel().then {
+            $0.text = "0"
+            $0.textColor = .white
+            $0.font = UIFont.boldSystemFont(ofSize: 32)
+        }
+        cntrView.addSubview(_cntrLbl)
+        _cntrLbl.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
+    private func incrementRhythmsCounter() {
+        _recordedRythmsCounter += 1
+        _cntrLbl.text = String(_recordedRythmsCounter)
     }
     
     private func setupRhythmTracker() {
@@ -120,7 +153,7 @@ class RecordViewController: ViewController {
     private func startMicrophoneRecordingAndRecognition() {
         _recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         let node = _audioEngine.inputNode
-        let recordingFormat = node.outputFormat(forBus: 0)
+        let recordingFormat = node.inputFormat(forBus: 0)
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { [weak self] buffer, _ in
             self?._recognitionRequest?.append(buffer)
         }
@@ -169,7 +202,6 @@ class RecordViewController: ViewController {
         _isRecording = false
         _wasStopped = true
         stopMicrophoneRecordingAndRecognition()
-        _tracker.stop()
         if !onDisappear {
             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
             DispatchQueue.main.async { [weak self] in
@@ -235,6 +267,9 @@ extension RecordViewController : RhythmTrackerDelegate {
         _chartView.stopHighlighting()
         guard _isRecording && _newRhythmRecordingBeganOnce else { return }
         _rhythms.append(rhythm)
+        DispatchQueue.main.async { [weak self] in
+            self?.incrementRhythmsCounter()
+        }
     }
     
     func gotJerkData(_ jerk: Double) {

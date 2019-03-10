@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftMLP
-import swix_ios
+import swix
 import Zip
 
 extension Notification.Name {
@@ -68,13 +68,9 @@ final class RhythmNet {
     
     @discardableResult
     func restoreParameters() -> Bool  {
-        var restoreResult: Bool!
-        RhythmNet._queue.sync { [unowned self] in
-            let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-            let netDirPath = (documentsPath as NSString).appendingPathComponent(RhythmNet.kNetName)
-            restoreResult = try! self._model.restore(from: netDirPath)
-        }
-        return restoreResult
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let netDirPath = (documentsPath as NSString).appendingPathComponent(RhythmNet.kNetName)
+        return try! self._model.restore(from: netDirPath)
     }
     
     static func zipParams() throws -> URL {
@@ -88,7 +84,7 @@ final class RhythmNet {
         return archiveUrl
     }
     
-    static func restoreDefaultParams() throws {
+    static func restoreDefaultParamsIfNeeded() throws {
         try RhythmNet._queue.sync {
             let fm = FileManager.default
             let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -142,5 +138,11 @@ final class RhythmNet {
             prediction = (cls, probs[0, cls])
         }
         return prediction
+    }
+    
+    func reset() {
+        RhythmNet._queue.sync { [weak self] in
+            self?._model.reset()
+        }
     }
 }

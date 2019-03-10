@@ -43,6 +43,8 @@ final class RhythmTracker : Then {
     }
     
     func start() {
+        guard !_isTracking else { return }
+        print("Start tracking")
         _isTracking = true
         var zPrevAcc: Double = 0
         _motion.startDeviceMotionUpdates(to: _queue) { [weak self] (motion, error) in
@@ -80,12 +82,12 @@ final class RhythmTracker : Then {
             _trackedRhythm?.data.append(zJerk)
         }
         
-//        print("RhythmTracker: tracking")
-        
         delegate?.gotJerkData?(zJerk)
     }
     
     func stop() {
+        guard _isTracking else { return }
+        print("Stop tracking")
         _isTracking = false
         _motion.stopDeviceMotionUpdates()
         _trackedRhythm = nil
