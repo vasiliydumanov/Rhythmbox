@@ -6,7 +6,7 @@ First you need to install [Git Large File Storage](https://git-lfs.github.com/) 
 ```
 brew install git-lfs
 ```
-The project depends on pods created recently. You may also need to update local clone of the spec-repo so that Cocoapods knows about their existence. Run:
+The project depends on recently created pods. You may also need to update local clone of the spec-repo so that Cocoapods knows about their existence. Run:
 ```
 pod repo update
 pod install
