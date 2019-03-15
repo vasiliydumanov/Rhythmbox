@@ -2,7 +2,7 @@
 Music player controlled by device acceleration changes. 
 
 # Installation
-This project depends on CocoaPods libs so dont't forget to run `pod install` after cloning.
+This project depends on CocoaPods libs so don't forget to run `pod install` after cloning.
 
 # Usage
 By default the model is trained to recognize taps on upper part of device back. Hold lower part of the phone with your left hand then tap with your right hand.
