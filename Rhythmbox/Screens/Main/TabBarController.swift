@@ -15,8 +15,8 @@ class TabBarController: UITabBarController {
         
         typealias ControllerData = (vc: UIViewController, image: UIImage)
         let data: [ControllerData] = [
-            (RhythmsViewController(), #imageLiteral(resourceName: "tb_player")),
-            (PlayerViewController(), #imageLiteral(resourceName: "tb_rhythms")),
+            (RhythmsViewController(), #imageLiteral(resourceName: "tb_rhythms")),
+            (PlayerViewController(), #imageLiteral(resourceName: "tb_player")),
         ]
         
         viewControllers = data
